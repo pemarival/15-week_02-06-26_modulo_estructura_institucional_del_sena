@@ -36,6 +36,8 @@ sena_management: {
       branch_campus_id: uuid {constraint: primary_key}
       training_center_id: uuid {constraint: foreign_key}
       address: varchar
+      latitude: decimal
+      longitude: decimal
       status: varchar
     }
   }
