@@ -30,12 +30,15 @@ sena_management: {
       status: varchar
     }
 
-    branch_campus: {
+    institutional_unit: {
       shape: sql_table
 
-      branch_campus_id: uuid {constraint: primary_key}
+      unit_id: uuid {constraint: primary_key}
       training_center_id: uuid {constraint: foreign_key}
+      municipality_name: varchar
+      unit_type: varchar
       address: varchar
+      phone: varchar
       latitude: decimal
       longitude: decimal
       status: varchar
@@ -46,7 +49,7 @@ sena_management: {
 
   institutional_structure.microregion.microregion_id -> institutional_structure.training_center.microregion_id
 
-  institutional_structure.training_center.training_center_id -> institutional_structure.branch_campus.training_center_id
+  institutional_structure.training_center.training_center_id -> institutional_structure.institutional_unit.training_center_id
 }
 
 
