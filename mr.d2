@@ -7,7 +7,7 @@ sena_management: {
       shape: sql_table
 
       macroregion_id: uuid {constraint: primary_key}
-      macroregion_name: varchar
+      region_name: varchar
       status: varchar
     }
 
@@ -16,7 +16,7 @@ sena_management: {
 
       microregion_id: uuid {constraint: primary_key}
       macroregion_id: uuid {constraint: foreign_key}
-      microregion_name: varchar
+      department_name: varchar
       status: varchar
     }
 
