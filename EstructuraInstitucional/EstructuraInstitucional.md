@@ -23,7 +23,7 @@ pais
 
 distancia_sedes  (tabla auxiliar: tiempo de desplazamiento entre pares de sedes)
 ```
-![Proyecto](./img/mapa.png)
+![Proyecto](./img/mapa.jpg)
 ---
 
 ## Entidades
