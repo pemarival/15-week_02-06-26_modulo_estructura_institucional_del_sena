@@ -4,7 +4,7 @@
    - macroregion
    - microregion
    - training_center
-   - branch_campus
+   - institutional_unit
 
 ## Link:
 
