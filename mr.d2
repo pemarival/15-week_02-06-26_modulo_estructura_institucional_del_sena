@@ -25,6 +25,7 @@ sena_management: {
 
       training_center_id: uuid {constraint: primary_key}
       microregion_id: uuid {constraint: foreign_key}
+      code: varchar
       center_name: varchar
       center_type: varchar
       status: varchar
@@ -36,6 +37,7 @@ sena_management: {
       unit_id: uuid {constraint: primary_key}
       training_center_id: uuid {constraint: foreign_key}
       municipality_name: varchar
+      unit_name: varchar
       unit_type: varchar
       address: varchar
       phone: varchar
@@ -51,5 +53,3 @@ sena_management: {
 
   institutional_structure.training_center.training_center_id -> institutional_structure.institutional_unit.training_center_id
 }
-
-
