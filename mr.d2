@@ -57,7 +57,7 @@ sena_management: {
       shape: sql_table
 
       location_id: uuid {constraint: primary_key}
-      unit_id: uuid {constraint: foreign_key}
+      municipality_id: uuid {constraint: foreign_key}
       address
       postal_code: varchar
       latitude: decimal
@@ -82,8 +82,6 @@ sena_management: {
       municipality_name
       status: varchar
     }
-
-
   }
 
   institutional_structure.macroregion.macroregion_id -> institutional_structure.microregion.macroregion_id
@@ -94,11 +92,10 @@ sena_management: {
 
   institutional_structure.institutional_unit.unit_id -> institutional_structure.instructor_assignment.unit_id
 
-  institutional_structure.institutional_unit.unit_id -> institutional_structure.location.unit_id
+  institutional_structure.municipality.municipality_id -> institutional_structure.location.municipality_id
 
   institutional_structure.microregion.microregion_id -> institutional_structure.department.microregion_id
 
   institutional_structure.department.department_id -> institutional_structure.municipality.department_id
-
-
 }
+
