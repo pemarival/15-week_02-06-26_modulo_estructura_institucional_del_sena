@@ -55,6 +55,17 @@ sena_management: {
       end_date: varchar
       status: varchar
     }
+
+    location: {
+      shape: sql_table
+
+      location_id: uuid {constraint: primary_key}
+      unit_id: uuid {constraint: foreign_key}
+      postal_code: varchar
+      latitude: decimal
+      longitude: decimal
+      status: varchar
+    }
   }
 
   institutional_structure.macroregion.macroregion_id -> institutional_structure.microregion.macroregion_id
@@ -64,5 +75,6 @@ sena_management: {
   institutional_structure.training_center.training_center_id -> institutional_structure.institutional_unit.training_center_id
 
   institutional_structure.institutional_unit.unit_id -> institutional_structure.instructor_assignment.unit_id
-}
 
+  institutional_structure.institutional_unit.unit_id -> institutional_structure.location.unit_id
+}
