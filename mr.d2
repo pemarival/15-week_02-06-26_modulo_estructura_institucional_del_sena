@@ -20,36 +20,21 @@ sena_management: {
       status: varchar
     }
 
-    training_center: {
+    department: {
       shape: sql_table
 
-      training_center_id: uuid {constraint: primary_key}
+      department_id: uuid {constraint: primary_key}
       microregion_id: uuid {constraint: foreign_key}
-      center_type_id: uuid {constraint: foreign_key}
-      center_code: varchar
-      center_name: varchar
+      department_name: varchar
       status: varchar
     }
 
-    institutional_unit: {
+    municipality: {
       shape: sql_table
 
-      unit_id: uuid {constraint: primary_key}
-      training_center_id: uuid {constraint: foreign_key}
-      location_id: uuid {constraint: foreign_key}
-      unit_name: varchar
-      unit_type: varchar
-      phone: varchar
-      status: varchar
-    }
-
-    instructor_assignment: {
-      shape: sql_table
-
-      assignment_id: uuid {constraint: primary_key}
-      unit_id: uuid {constraint: foreign_key}
-      start_date: date
-      end_date: date
+      municipality_id: uuid {constraint: primary_key}
+      department_id: uuid {constraint: foreign_key}
+      municipality_name: varchar
       status: varchar
     }
 
@@ -65,50 +50,76 @@ sena_management: {
       status: varchar
     }
 
-    department: {
-      shape: sql_table
-
-      department_id: uuid {constraint: primary_key}
-      microregion_id: uuid {constraint: foreign_key}
-      department_name
-      status: varchar
-    }
-
-    municipality: {
-      shape: sql_table
-
-      municipality_id: uuid {constraint: primary_key}
-      department_id: uuid {constraint: foreign_key}
-      municipality_name
-      status: varchar
-    }
-
     training_center_type: {
       shape: sql_table
 
       center_type_id: uuid {constraint: primary_key}
       name: varchar
       description: varchar
+      status: varchar
+    }
+
+    training_center: {
+      shape: sql_table
+
+      training_center_id: uuid {constraint: primary_key}
+      microregion_id: uuid {constraint: foreign_key}
+      center_type_id: uuid {constraint: foreign_key}
+      center_code: varchar
+      center_name: varchar
+      status: varchar
+    }
+
+    unit_type: {
+      shape: sql_table
+
+      unit_type_id: uuid {constraint: primary_key}
+      name: varchar
+      description: varchar
+      status: varchar
+    }
+
+    institutional_unit: {
+      shape: sql_table
+
+      unit_id: uuid {constraint: primary_key}
+      training_center_id: uuid {constraint: foreign_key}
+      location_id: uuid {constraint: foreign_key}
+      unit_type_id: uuid {constraint: foreign_key}
+      unit_name: varchar
+      phone: varchar
+      status: varchar
+    }
+
+    instructor_assignment: {
+      shape: sql_table
+
+      assignment_id: uuid {constraint: primary_key}
+      instructor_id: uuid {constraint: foreign_key}
+      unit_id: uuid {constraint: foreign_key}
+      start_date: date
+      end_date: date
+      status: varchar
     }
   }
 
   institutional_structure.macroregion.macroregion_id -> institutional_structure.microregion.macroregion_id
 
-  institutional_structure.microregion.microregion_id -> institutional_structure.training_center.microregion_id
-
-  institutional_structure.training_center.training_center_id -> institutional_structure.institutional_unit.training_center_id
-
-  institutional_structure.institutional_unit.unit_id -> institutional_structure.instructor_assignment.unit_id
-
-  institutional_structure.municipality.municipality_id -> institutional_structure.location.municipality_id
-
   institutional_structure.microregion.microregion_id -> institutional_structure.department.microregion_id
 
   institutional_structure.department.department_id -> institutional_structure.municipality.department_id
 
-  institutional_structure.location.location_id -> institutional_structure.institutional_unit.location_id
+  institutional_structure.municipality.municipality_id -> institutional_structure.location.municipality_id
+
+  institutional_structure.microregion.microregion_id -> institutional_structure.training_center.microregion_id
 
   institutional_structure.training_center_type.center_type_id -> institutional_structure.training_center.center_type_id
+
+  institutional_structure.training_center.training_center_id -> institutional_structure.institutional_unit.training_center_id
+
+  institutional_structure.unit_type.unit_type_id -> institutional_structure.institutional_unit.unit_type_id
+
+  institutional_structure.location.location_id -> institutional_structure.institutional_unit.location_id
+
+  institutional_structure.institutional_unit.unit_id -> institutional_structure.instructor_assignment.unit_id
 }
-
-
