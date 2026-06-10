@@ -6,6 +6,7 @@
    - training_center
    - institutional_unit
    - instructor_assignment
+   - location
    - department
    - municipality
 
