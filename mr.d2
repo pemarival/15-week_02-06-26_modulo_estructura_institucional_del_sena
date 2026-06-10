@@ -39,10 +39,7 @@ sena_management: {
       municipality_name: varchar
       unit_name: varchar
       unit_type: varchar
-      address: varchar
       phone: varchar
-      latitude: decimal
-      longitude: decimal
       status: varchar
     }
 
@@ -51,8 +48,8 @@ sena_management: {
 
       assignment_id: uuid {constraint: primary_key}
       unit_id: uuid {constraint: foreign_key}
-      start_date: varchar
-      end_date: varchar
+      start_date: date
+      end_date: date
       status: varchar
     }
 
@@ -61,6 +58,7 @@ sena_management: {
 
       location_id: uuid {constraint: primary_key}
       unit_id: uuid {constraint: foreign_key}
+      address
       postal_code: varchar
       latitude: decimal
       longitude: decimal
