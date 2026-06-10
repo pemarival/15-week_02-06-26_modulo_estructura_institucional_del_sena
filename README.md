@@ -5,6 +5,7 @@
    - microregion
    - training_center
    - institutional_unit
+   - instructor_assignment
 
 ## Link:
 
